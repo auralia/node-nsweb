@@ -356,7 +356,8 @@ export class NsWeb {
                 let request = https.request(
                     {
                         host: "www.nationstates.net",
-                        path: "/",
+                        path: "/?userAgent=" + encodeURIComponent(
+                            this.userAgent),
                         method: "POST",
                         headers
                     },
