@@ -81,6 +81,8 @@
 				source maps. There is also a <code>docs</code> target to generate documentation.</p>
 				<p>Consult <a href="https://auralia.github.io/node-nsweb/">the documentation</a> for more
 				information on API structure and methods.</p>
+				<p>nsweb targets ES5 but requires support for ES6 promises, so if you&#39;re not
+				using a runtime that supports them natively, you&#39;ll have to use a polyfill.</p>
 				<h2 id="examples">Examples</h2>
 				<p>The following is a simple example that logs into a nation:</p>
 				<pre><code class="lang-js"><span class="hljs-keyword">var</span> nsweb = <span class="hljs-built_in">require</span>(<span class="hljs-string">"nsweb"</span>);
@@ -89,15 +91,15 @@
 <span class="hljs-keyword">var</span> web = <span class="hljs-keyword">new</span> nsweb.NsWeb(<span class="hljs-string">"Your nation's name"</span>);
 <span class="hljs-comment">// <span class="hljs-doctag">TODO:</span> Replace nation name and password with your own</span>
 web.loginRequest(<span class="hljs-string">"Your nation's name"</span>, <span class="hljs-string">"Your nation's password"</span>)
-   .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">success</span>) </span>{
-       <span class="hljs-keyword">if</span> (success) {
-           <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Login succeeded"</span>);
-       } <span class="hljs-keyword">else</span> {
-           <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Login failed"</span>);
-       }
+   .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+       <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Login succeeded"</span>);
+   })
+   .catch(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span>{
+       <span class="hljs-built_in">console</span>.error(<span class="hljs-string">"Login failed"</span>);
+       <span class="hljs-built_in">console</span>.error(err);
    })
    .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
-       api.cleanup();
+       web.cleanup();
    });
 </code></pre>
 				<p>For additional examples, consult the examples/example.js file.</p>
@@ -120,6 +122,9 @@ web.loginRequest(<span class="hljs-string">"Your nation's name"</span>, <span cl
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="classes/requesterror.html" class="tsd-kind-icon">Request<wbr>Error</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-not-exported">
+						<a href="interfaces/httpresponse.html" class="tsd-kind-icon">Http<wbr>Response</a>
 					</li>
 					<li class=" tsd-kind-variable">
 						<a href="globals.html#version" class="tsd-kind-icon">VERSION</a>

@@ -1,6 +1,6 @@
 {
   "name": "nsweb",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Provides access to some parts of NationStates not exposed through the standard API",
   "keywords": [
     "NationStates"
@@ -34,7 +34,6 @@
     "typescript": "^2.1.4"
   },
   "dependencies": {
-    "@types/node": "^6.0.55",
-    "es6-promise": "^4.0.5"
+    "@types/node": "^6.0.57"
   }
 }

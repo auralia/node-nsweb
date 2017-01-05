@@ -22,6 +22,9 @@ source maps. There is also a `docs` target to generate documentation.
 Consult [the documentation](https://auralia.github.io/node-nsweb/) for more 
 information on API structure and methods.
 
+nsweb targets ES5 but requires support for ES6 promises, so if you're not 
+using a runtime that supports them natively, you'll have to use a polyfill.
+
 ## Examples ##
 
 The following is a simple example that logs into a nation:
@@ -33,15 +36,15 @@ var nsweb = require("nsweb");
 var web = new nsweb.NsWeb("Your nation's name");
 // TODO: Replace nation name and password with your own
 web.loginRequest("Your nation's name", "Your nation's password")
-   .then(function(success) {
-       if (success) {
-           console.log("Login succeeded");
-       } else {
-           console.log("Login failed");
-       }
+   .then(function() {
+       console.log("Login succeeded");
+   })
+   .catch(function(err) {
+       console.error("Login failed");
+       console.error(err);
    })
    .then(function() {
-       api.cleanup();
+       web.cleanup();
    });
 ```
 

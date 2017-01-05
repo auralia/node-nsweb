@@ -13,13 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {Promise} from "es6-promise";
 import * as https from "https";
+import {IncomingMessage} from "http";
 
 /**
  * The version of nsweb.
  */
-export const VERSION = "0.1.0";
+export const VERSION = "0.1.1";
 
 /**
  * This error is thrown after a failed request to the NationStates website and
@@ -31,9 +31,9 @@ export class RequestError extends Error {
      */
     public message: string;
     /**
-     * The HTTP response code returned by the NationStates website.
+     * The HTTP response metadata returned by the NationStates website.
      */
-    public responseCode?: number;
+    public responseMetadata?: IncomingMessage;
     /**
      * The HTTP response text returned by the NationStates website.
      */
@@ -43,17 +43,26 @@ export class RequestError extends Error {
      * Initializes a new instance of the ApiError class.
      *
      * @param message The message associated with the error.
-     * @param responseCode The HTTP response code returned by the NationStates
-     *                     website.
+     * @param responseMetadata The HTTP response metadata returned by the
+     *                         NationStates website.
      * @param responseText The HTTP response text returned by the NationStates
      *                     website.
      */
-    constructor(message: string, responseCode?: number, responseText?: string) {
+    constructor(message: string, responseMetadata?: IncomingMessage,
+                responseText?: string) {
         super(message);
         this.message = message;
-        this.responseCode = responseCode;
+        this.responseMetadata = responseMetadata;
         this.responseText = responseText;
     }
+}
+
+/**
+ * An HTTP response.
+ */
+interface HttpResponse {
+    metadata: IncomingMessage,
+    text: string
 }
 
 /**
@@ -240,23 +249,16 @@ export class NsWeb {
      *
      * @param nation The nation name to log in with.
      * @param password The password to log in with.
-     * @return A promise returning true if the log in attempt succeeded or
-     *         false if it failed.
+     * @return A void promise. An error will be thrown if login fails.
      */
-    public loginRequest(nation: string, password: string): Promise<boolean> {
-        return Promise.resolve().then(() => {
-            let data = "logging_in=1";
-            data += "&nation=" + encodeURIComponent(NsWeb.toId(nation));
-            data += "&password=" + encodeURIComponent(password);
+    public async loginRequest(nation: string,
+                              password: string): Promise<void> {
+        let data = "logging_in=1";
+        data += "&nation=" + encodeURIComponent(NsWeb.toId(nation));
+        data += "&password=" + encodeURIComponent(password);
 
-            return this.loginRestoreRequest(data).then(headers => {
-                return headers["set-cookie"]
-                           .filter((str: string) => {
-                               return str.indexOf("pin=") === 0;
-                           })
-                           .length === 1
-            });
-        });
+        const response = await this.postRequest(data);
+        NsWeb.validateLoginRestoreResponse(response);
     }
 
     /**
@@ -268,25 +270,44 @@ export class NsWeb {
      *
      * @param nation The nation name to log in with.
      * @param password The password to log in with.
-     * @return A promise returning true if the restore attempt succeeded or
-     *         false if it failed.
+     * @return A void promise. An error will be thrown if restoration fails.
      */
-    public restoreRequest(nation: string, password: string): Promise<boolean> {
-        return Promise.resolve().then(() => {
-            let data = "logging_in=1";
-            data += "&nation=" + encodeURIComponent(NsWeb.toId(nation));
-            data += "&restore_nation=" + encodeURIComponent(" Restore "
-                    + NsWeb.toId(nation) + " ");
-            data += "&restore_password=" + encodeURIComponent(password);
+    public async restoreRequest(nation: string,
+                                password: string): Promise<void> {
+        let data = "logging_in=1";
+        data += "&nation=" + encodeURIComponent(NsWeb.toId(nation));
+        data += "&restore_nation=" + encodeURIComponent(" Restore "
+                + NsWeb.toId(nation) + " ");
+        data += "&restore_password=" + encodeURIComponent(password);
 
-            return this.loginRestoreRequest(data).then(headers => {
-                return headers["set-cookie"]
-                           .filter((str: string) => {
-                               return str.indexOf("pin=") === 0;
-                           })
-                           .length === 1
-            });
-        });
+        const response = await this.postRequest(data);
+        NsWeb.validateLoginRestoreResponse(response);
+    }
+
+    /**
+     * Validates the response of a login or restore request to ensure that
+     * the login or restore was successful.
+     *
+     * An error is thrown if the login or restore failed.
+     *
+     * @param response The response data associated with the login or
+     *                 restore request.
+     */
+    private static validateLoginRestoreResponse(response: HttpResponse): void {
+        let cookieHeader = response.metadata.headers["set-cookie"];
+        if (!(cookieHeader instanceof Array)) {
+            cookieHeader = [cookieHeader];
+        }
+
+        const pinHeader = cookieHeader.filter(
+            (str: string) => str.indexOf("pin=") === 0);
+        if (pinHeader.length !== 1) {
+            throw new RequestError(
+                "Request failed: Required cookie missing (incorrect nation name"
+                + " or password?)",
+                response.metadata,
+                response.text)
+        }
     }
 
     /**
@@ -332,9 +353,9 @@ export class NsWeb {
      *
      * @param data The specified data.
      *
-     * @return A promise returning the headers from the response.
+     * @return A promise returning the response and associated data.
      */
-    private loginRestoreRequest(data: string): Promise<any> {
+    private postRequest(data: string): Promise<HttpResponse> {
         return new Promise((resolve, reject) => {
             if (this.blockNewRequests) {
                 throw new Error("Request blocked: blockNewRequests property is"
@@ -361,27 +382,16 @@ export class NsWeb {
                         method: "POST",
                         headers
                     },
-                    res => {
+                    response => {
                         let data = "";
-                        res.on("data", chunk => {
+                        response.on("data", chunk => {
                             data += chunk;
                         });
-                        res.on("end", () => {
+                        response.on("end", () => {
                             this._requestInProgress = false;
                             this._lastRequestTime = Date.now();
 
-                            // Accept response code 302 on login and restore
-                            if (res.statusCode === 200
-                                || res.statusCode === 302)
-                            {
-                                resolve(res.headers);
-                            } else {
-                                reject(new RequestError(
-                                    `Request failed: API returned HTTP`
-                                    + ` response code ${res.statusCode}`,
-                                    res.statusCode,
-                                    data));
-                            }
+                            resolve({metadata: response, text: data})
                         });
                     }
                 ).on("error", reject);

@@ -15,6 +15,7 @@
  */
 
 var nsweb = require("../lib/web.js");
+var util = require("util");
 
 // TODO: Replace the user agent with your own
 var web = new nsweb.NsWeb("Your nation's name");
@@ -25,12 +26,12 @@ function loginExample() {
     var password = "";
 
     return web.loginRequest(nation, password)
-              .then(success => {
-                  if (success) {
-                      console.log("Login succeeded");
-                  } else {
-                      console.log("Login failed");
-                  }
+              .then(function() {
+                  console.log("Login succeeded");
+              })
+              .catch(function(err) {
+                  console.error("Login failed");
+                  console.error(util.inspect(err));
               });
 }
 
@@ -40,12 +41,12 @@ function restoreExample() {
     var password = "";
 
     return web.restoreRequest(nation, password)
-              .then(success => {
-                  if (success) {
-                      console.log("Restore succeeded");
-                  } else {
-                      console.log("Restore failed");
-                  }
+              .then(function() {
+                  console.log("Restore succeeded");
+              })
+              .catch(function(err) {
+                  console.error("Restore failed");
+                  console.error(util.inspect(err));
               });
 }
 
