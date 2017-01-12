@@ -13,8 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import * as https from "https";
+
 import {IncomingMessage} from "http";
+import * as https from "https";
 
 /**
  * The version of nsweb.
@@ -59,6 +60,8 @@ export class RequestError extends Error {
 
 /**
  * An HTTP response.
+ *
+ * @hidden
  */
 interface HttpResponse {
     metadata: IncomingMessage,
