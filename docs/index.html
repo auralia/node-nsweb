@@ -71,7 +71,7 @@
 				without worrying about making HTTP requests or rate limiting.</p>
 				<p>nsweb features the following:</p>
 				<ul>
-					<li>the ability to programmatically log into or restore nations</li>
+					<li>the ability to programmatically restore nations</li>
 					<li>rate-limiting to respect NationStates site rules</li>
 				</ul>
 				<h2 id="usage">Usage</h2>
@@ -84,18 +84,18 @@
 				<p>nsweb targets ES5 but requires support for ES6 promises, so if you&#39;re not
 				using a runtime that supports them natively, you&#39;ll have to use a polyfill.</p>
 				<h2 id="examples">Examples</h2>
-				<p>The following is a simple example that logs into a nation:</p>
+				<p>The following is a simple example that restores a nation:</p>
 				<pre><code class="lang-js"><span class="hljs-keyword">var</span> nsweb = <span class="hljs-built_in">require</span>(<span class="hljs-string">"nsweb"</span>);
 
 <span class="hljs-comment">// <span class="hljs-doctag">TODO:</span> Replace the user agent with your own</span>
 <span class="hljs-keyword">var</span> web = <span class="hljs-keyword">new</span> nsweb.NsWeb(<span class="hljs-string">"Your nation's name"</span>);
 <span class="hljs-comment">// <span class="hljs-doctag">TODO:</span> Replace nation name and password with your own</span>
-web.loginRequest(<span class="hljs-string">"Your nation's name"</span>, <span class="hljs-string">"Your nation's password"</span>)
+web.restoreRequest(<span class="hljs-string">"Your nation's name"</span>, <span class="hljs-string">"Your nation's password"</span>)
    .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
-       <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Login succeeded"</span>);
+       <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Restore succeeded"</span>);
    })
    .catch(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span>{
-       <span class="hljs-built_in">console</span>.error(<span class="hljs-string">"Login failed"</span>);
+       <span class="hljs-built_in">console</span>.error(<span class="hljs-string">"Restore failed"</span>);
        <span class="hljs-built_in">console</span>.error(err);
    })
    .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{

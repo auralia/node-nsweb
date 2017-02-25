@@ -20,21 +20,6 @@ var util = require("util");
 // TODO: Replace the user agent with your own
 var web = new nsweb.NsWeb("Your nation's name");
 
-function loginExample() {
-    // TODO: Replace nation name and password with your own
-    var nation = "";
-    var password = "";
-
-    return web.loginRequest(nation, password)
-              .then(function() {
-                  console.log("Login succeeded");
-              })
-              .catch(function(err) {
-                  console.error("Login failed");
-                  console.error(util.inspect(err));
-              });
-}
-
 function restoreExample() {
     // TODO: Replace nation name and password with your own
     var nation = "";
@@ -52,10 +37,6 @@ function restoreExample() {
 
 // The following code executes each example.
 Promise.resolve()
-       .then(function() {
-           console.log("\nLogin example:\n");
-           return loginExample();
-       })
        .then(function() {
            console.log("\nRestore example:\n");
            return restoreExample();

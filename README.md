@@ -8,7 +8,7 @@ without worrying about making HTTP requests or rate limiting.
 
 nsweb features the following:
 
-* the ability to programmatically log into or restore nations
+* the ability to programmatically restore nations
 * rate-limiting to respect NationStates site rules
 
 ## Usage ##
@@ -27,7 +27,7 @@ using a runtime that supports them natively, you'll have to use a polyfill.
 
 ## Examples ##
 
-The following is a simple example that logs into a nation:
+The following is a simple example that restores a nation:
 
 ```js
 var nsweb = require("nsweb");
@@ -35,12 +35,12 @@ var nsweb = require("nsweb");
 // TODO: Replace the user agent with your own
 var web = new nsweb.NsWeb("Your nation's name");
 // TODO: Replace nation name and password with your own
-web.loginRequest("Your nation's name", "Your nation's password")
+web.restoreRequest("Your nation's name", "Your nation's password")
    .then(function() {
-       console.log("Login succeeded");
+       console.log("Restore succeeded");
    })
    .catch(function(err) {
-       console.error("Login failed");
+       console.error("Restore failed");
        console.error(err);
    })
    .then(function() {

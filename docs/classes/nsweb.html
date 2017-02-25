@@ -92,6 +92,21 @@
 								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="nsweb.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
+						<section class="tsd-index-section tsd-is-private tsd-is-private-protected">
+							<h3>Properties</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="nsweb.html#_blockexistingrequests" class="tsd-kind-icon">_block<wbr>Existing<wbr>Requests</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="nsweb.html#_blocknewrequests" class="tsd-kind-icon">_block<wbr>New<wbr>Requests</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="nsweb.html#_cleanup" class="tsd-kind-icon">_cleanup</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="nsweb.html#_delay" class="tsd-kind-icon">_delay</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="nsweb.html#_interval" class="tsd-kind-icon">_interval</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="nsweb.html#_lastrequesttime" class="tsd-kind-icon">_last<wbr>Request<wbr>Time</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="nsweb.html#_queue" class="tsd-kind-icon">_queue</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="nsweb.html#_requestdelaymillis" class="tsd-kind-icon">_request<wbr>Delay<wbr>Millis</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="nsweb.html#_requestinprogress" class="tsd-kind-icon">_request<wbr>InProgress</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="nsweb.html#_useragent" class="tsd-kind-icon">_user<wbr>Agent</a></li>
+							</ul>
+						</section>
 						<section class="tsd-index-section ">
 							<h3>Accessors</h3>
 							<ul class="tsd-index-list">
@@ -109,8 +124,10 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="nsweb.html#cleanup" class="tsd-kind-icon">cleanup</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="nsweb.html#clearqueue" class="tsd-kind-icon">clear<wbr>Queue</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="nsweb.html#loginrequest" class="tsd-kind-icon">login<wbr>Request</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="nsweb.html#initinterval" class="tsd-kind-icon">init<wbr>Interval</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="nsweb.html#postrequest" class="tsd-kind-icon">post<wbr>Request</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="nsweb.html#restorerequest" class="tsd-kind-icon">restore<wbr>Request</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="nsweb.html#toid" class="tsd-kind-icon">to<wbr>Id</a></li>
 							</ul>
 						</section>
 					</div>
@@ -178,6 +195,150 @@
 							<h4 class="tsd-returns-title">Returns <a href="nsweb.html" class="tsd-signature-type">NsWeb</a></h4>
 						</li>
 					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group tsd-is-private tsd-is-private-protected">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="_blockexistingrequests" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _block<wbr>Existing<wbr>Requests</h3>
+					<div class="tsd-signature tsd-kind-icon">_block<wbr>Existing<wbr>Requests<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in web.ts:88</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="_blocknewrequests" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _block<wbr>New<wbr>Requests</h3>
+					<div class="tsd-signature tsd-kind-icon">_block<wbr>New<wbr>Requests<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in web.ts:89</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="_cleanup" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _cleanup</h3>
+					<div class="tsd-signature tsd-kind-icon">_cleanup<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in web.ts:90</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="_delay" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _delay</h3>
+					<div class="tsd-signature tsd-kind-icon">_delay<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in web.ts:77</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="_interval" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _interval</h3>
+					<div class="tsd-signature tsd-kind-icon">_interval<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in web.ts:84</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="_lastrequesttime" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _last<wbr>Request<wbr>Time</h3>
+					<div class="tsd-signature tsd-kind-icon">_last<wbr>Request<wbr>Time<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in web.ts:85</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="_queue" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _queue</h3>
+					<div class="tsd-signature tsd-kind-icon">_queue<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">[]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in web.ts:80</li>
+						</ul>
+					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter">
+								<h5>func<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span></h5>
+								<ul class="tsd-parameters">
+									<li class="tsd-parameter-siganture">
+										<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-variable tsd-is-not-exported">
+											<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+										</ul>
+										<ul class="tsd-descriptions">
+											<li class="tsd-description">
+												<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+											</li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+							<li class="tsd-parameter">
+								<h5>reject<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span></h5>
+								<ul class="tsd-parameters">
+									<li class="tsd-parameter-siganture">
+										<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-variable tsd-is-not-exported">
+											<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>err<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+										</ul>
+										<ul class="tsd-descriptions">
+											<li class="tsd-description">
+												<h4 class="tsd-parameters-title">Parameters</h4>
+												<ul class="tsd-parameters">
+													<li>
+														<h5>err: <span class="tsd-signature-type">any</span></h5>
+													</li>
+												</ul>
+												<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+											</li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="_requestdelaymillis" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _request<wbr>Delay<wbr>Millis</h3>
+					<div class="tsd-signature tsd-kind-icon">_request<wbr>Delay<wbr>Millis<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in web.ts:78</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="_requestinprogress" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _request<wbr>InProgress</h3>
+					<div class="tsd-signature tsd-kind-icon">_request<wbr>InProgress<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in web.ts:86</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="_useragent" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _user<wbr>Agent</h3>
+					<div class="tsd-signature tsd-kind-icon">_user<wbr>Agent<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in web.ts:76</li>
+						</ul>
+					</aside>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
@@ -491,42 +652,58 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="loginrequest" class="tsd-anchor"></a>
-					<h3>login<wbr>Request</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">login<wbr>Request<span class="tsd-signature-symbol">(</span>nation<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, password<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span></li>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="initinterval" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> init<wbr>Interval</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">init<wbr>Interval<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in web.ts:257</li>
+									<li>Defined in web.ts:288</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Attempts to log into NationStates with the specified nation name and
-									password.</p>
+									<p>Initializes the API scheduler.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="postrequest" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> post<wbr>Request</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">post<wbr>Request<span class="tsd-signature-symbol">(</span>data<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in web.ts:330</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Creates a POST request to the NationStates website with the specified
+									data.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>nation: <span class="tsd-signature-type">string</span></h5>
+									<h5>data: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>The nation name to log in with.</p>
-									</div>
-								</li>
-								<li>
-									<h5>password: <span class="tsd-signature-type">string</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>The password to log in with.</p>
+										<p>The specified data.</p>
 									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span></h4>
-							<p>A void promise. An error will be thrown if login fails.</p>
+							<p>A promise returning the response and associated data.</p>
 						</li>
 					</ul>
 				</section>
@@ -540,7 +717,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in web.ts:278</li>
+									<li>Defined in web.ts:260</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -571,6 +748,39 @@
 						</li>
 					</ul>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+					<a name="toid" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> to<wbr>Id</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">to<wbr>Id<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in web.ts:386</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Converts names to a fixed form: all lowercase, with spaces replaced
+									with underscores.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>name: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The name to convert.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<p>The converted name.</p>
+						</li>
+					</ul>
+				</section>
 			</section>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
@@ -590,6 +800,36 @@
 						<ul>
 							<li class=" tsd-kind-constructor tsd-parent-kind-class">
 								<a href="nsweb.html#constructor" class="tsd-kind-icon">constructor</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="nsweb.html#_blockexistingrequests" class="tsd-kind-icon">_block<wbr>Existing<wbr>Requests</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="nsweb.html#_blocknewrequests" class="tsd-kind-icon">_block<wbr>New<wbr>Requests</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="nsweb.html#_cleanup" class="tsd-kind-icon">_cleanup</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="nsweb.html#_delay" class="tsd-kind-icon">_delay</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="nsweb.html#_interval" class="tsd-kind-icon">_interval</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="nsweb.html#_lastrequesttime" class="tsd-kind-icon">_last<wbr>Request<wbr>Time</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="nsweb.html#_queue" class="tsd-kind-icon">_queue</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="nsweb.html#_requestdelaymillis" class="tsd-kind-icon">_request<wbr>Delay<wbr>Millis</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="nsweb.html#_requestinprogress" class="tsd-kind-icon">_request<wbr>InProgress</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="nsweb.html#_useragent" class="tsd-kind-icon">_user<wbr>Agent</a>
 							</li>
 							<li class=" tsd-kind-accessor tsd-parent-kind-class">
 								<a href="nsweb.html#blockexistingrequests" class="tsd-kind-icon">block<wbr>Existing<wbr>Requests</a>
@@ -618,11 +858,17 @@
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="nsweb.html#clearqueue" class="tsd-kind-icon">clear<wbr>Queue</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="nsweb.html#loginrequest" class="tsd-kind-icon">login<wbr>Request</a>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+								<a href="nsweb.html#initinterval" class="tsd-kind-icon">init<wbr>Interval</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+								<a href="nsweb.html#postrequest" class="tsd-kind-icon">post<wbr>Request</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="nsweb.html#restorerequest" class="tsd-kind-icon">restore<wbr>Request</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+								<a href="nsweb.html#toid" class="tsd-kind-icon">to<wbr>Id</a>
 							</li>
 						</ul>
 					</li>

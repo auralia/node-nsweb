@@ -20,7 +20,7 @@ import * as https from "https";
 /**
  * The version of nsweb.
  */
-export const VERSION = "0.1.1";
+export const VERSION = "0.2.0";
 
 /**
  * This error is thrown after a failed request to the NationStates website and
@@ -247,24 +247,6 @@ export class NsWeb {
     }
 
     /**
-     * Attempts to log into NationStates with the specified nation name and
-     * password.
-     *
-     * @param nation The nation name to log in with.
-     * @param password The password to log in with.
-     * @return A void promise. An error will be thrown if login fails.
-     */
-    public async loginRequest(nation: string,
-                              password: string): Promise<void> {
-        let data = "logging_in=1";
-        data += "&nation=" + encodeURIComponent(NsWeb.toId(nation));
-        data += "&password=" + encodeURIComponent(password);
-
-        const response = await this.postRequest(data);
-        NsWeb.validateLoginRestoreResponse(response);
-    }
-
-    /**
      * Attempts to restore the specified NationStates nation using the
      * specified password.
      *
@@ -284,19 +266,6 @@ export class NsWeb {
         data += "&restore_password=" + encodeURIComponent(password);
 
         const response = await this.postRequest(data);
-        NsWeb.validateLoginRestoreResponse(response);
-    }
-
-    /**
-     * Validates the response of a login or restore request to ensure that
-     * the login or restore was successful.
-     *
-     * An error is thrown if the login or restore failed.
-     *
-     * @param response The response data associated with the login or
-     *                 restore request.
-     */
-    private static validateLoginRestoreResponse(response: HttpResponse): void {
         let cookieHeader = response.metadata.headers["set-cookie"];
         if (!(cookieHeader instanceof Array)) {
             cookieHeader = [cookieHeader];
