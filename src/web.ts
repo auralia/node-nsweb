@@ -20,7 +20,7 @@ import * as https from "https";
 /**
  * The version of nsweb.
  */
-export const VERSION = "0.2.0";
+export const VERSION = "0.2.1";
 
 /**
  * This error is thrown after a failed request to the NationStates website and
@@ -50,7 +50,8 @@ export class RequestError extends Error {
      *                     website.
      */
     constructor(message: string, responseMetadata?: IncomingMessage,
-                responseText?: string) {
+                responseText?: string)
+    {
         super(message);
         this.message = message;
         this.responseMetadata = responseMetadata;
@@ -267,16 +268,24 @@ export class NsWeb {
 
         const response = await this.postRequest(data);
         let cookieHeader = response.metadata.headers["set-cookie"];
+        if (Object.prototype.toString.call(cookieHeader)
+            == "[object Undefined]" || cookieHeader == undefined)
+        {
+            throw new RequestError(
+                "Request failed: Required cookie missing (incorrect"
+                + " nation name or password?)",
+                response.metadata,
+                response.text)
+        }
         if (!(cookieHeader instanceof Array)) {
             cookieHeader = [cookieHeader];
         }
-
         const pinHeader = cookieHeader.filter(
             (str: string) => str.indexOf("pin=") === 0);
         if (pinHeader.length !== 1) {
             throw new RequestError(
-                "Request failed: Required cookie missing (incorrect nation name"
-                + " or password?)",
+                "Request failed: Required cookie missing (incorrect"
+                + " nation name or password?)",
                 response.metadata,
                 response.text)
         }

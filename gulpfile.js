@@ -68,7 +68,6 @@ gulp.task("docs", ["prod", "clean-docs"], function() {
                                  mode: "file",
                                  module: "commonjs",
                                  out: "docs",
-                                 target: "es5",
-                                 ignoreCompilerErrors: true
+                                 target: "es6"
                              }));
 });

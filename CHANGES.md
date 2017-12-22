@@ -1,3 +1,7 @@
+## 0.2.1 ##
+
+* Package updates and other miscellaneous changes
+
 ## 0.2.0 ##
 
 * Remove login functionality
