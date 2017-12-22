@@ -268,9 +268,7 @@ export class NsWeb {
 
         const response = await this.postRequest(data);
         let cookieHeader = response.metadata.headers["set-cookie"];
-        if (Object.prototype.toString.call(cookieHeader)
-            == "[object Undefined]" || cookieHeader == undefined)
-        {
+        if (typeof cookieHeader == "undefined") {
             throw new RequestError(
                 "Request failed: Required cookie missing (incorrect"
                 + " nation name or password?)",
